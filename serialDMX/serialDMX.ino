@@ -10,7 +10,6 @@ int light3 = 3;
 int light4 = 4;
 
 void setup() {
-  Serial.println("Ready for some colour strings - receiving HSV!");
   Serial.begin(9600);
   DmxSimple.usePin(DMX_TRANSMIT_PIN);
   DmxSimple.maxChannel(DMX_MASTER_CHANNELS);
@@ -18,6 +17,8 @@ void setup() {
   digitalWrite(DMX_ENABLE_PIN, HIGH);
 
   setLightToRGB(1, 50, 50, 50);
+  Serial.println("Ready for some colour strings - receiving HSV!");
+  Serial.println("Light: 1-4, HUE: 0-360, Sat:0f-1f, Val: 0f-1f");
 
 }
 
@@ -41,7 +42,7 @@ void loop() {
       // Set the light going.
       setLightToRGB(channel, red, green, blue);
 
-      Serial.print("Channel ");
+      Serial.print("Light ");
       Serial.print(channel);
       Serial.print(": ");
       Serial.print(red);
