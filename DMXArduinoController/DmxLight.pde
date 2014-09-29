@@ -30,6 +30,19 @@ class DmxLight {
     ellipse(x, y, 50, 50);
   }
 
+  void setTargetColour(float h, float s, float v) {
+    println("Set Target Colour for light " + number + " to: "+ h + ", " + s + ", " + v);
+    target_hue = h;
+    target_sat = s;
+    target_val = v;
+  }
+
+  void updateLight(Serial port) {
+    String lightMessage = number + ", "+hue+", "+sat+", "+val+"\n";
+    print(lightMessage);
+    port.write(lightMessage);
+  }
+
   void fade() {
     if (abs(target_hue - hue) < HUE_FADE) {
       hue = target_hue;
@@ -54,18 +67,5 @@ class DmxLight {
     } else if (target_val < val) {
       val -= VAL_FADE;
     }
-  }
-
-  void setTargetColour(float h, float s, float v) {
-    println("Set Target Colour for light " + number + " to: "+ h + ", " + s + ", " + v);
-    target_hue = h;
-    target_sat = s;
-    target_val = v;
-  }
-
-  void updateLight(Serial port) {
-    String lightMessage = number + ", "+hue+", "+sat+", "+val+"\n";
-    print(lightMessage);
-    port.write(lightMessage);
   }
 }
