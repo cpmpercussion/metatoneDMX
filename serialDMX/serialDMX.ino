@@ -1,6 +1,7 @@
 #include <DmxSimple.h>
-#define DMX_MASTER_CHANNELS   100
-#define DMX_ENABLE_PIN                2
+#define DMX_MASTER_CHANNELS   512
+#define DMX_ENABLE_PIN 2
+#define DMX_ENABLE_PIN 3
 #define DMX_TRANSMIT_PIN  4
 #define STEP_INTERVAL           1
 
